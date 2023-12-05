@@ -1,11 +1,8 @@
+.button {
+background-color: blue;
+color: white
+}
 
-body {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    height: 100vh;
-    margin: 0;
-  }
   
   #calculator {
     display: grid;
@@ -15,4 +12,6 @@ body {
     margin: auto;
     text-align: left;
     color: brown;
+    justify-content: left;
+    align-items: left;
   }

@@ -1,65 +1,64 @@
-const multiply = function(a, b) {    // functions for math operations
-    return a * b; 
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = '';
+
+function add(a,b){
+  return a + b;
 }
 
-const add = function(a, b) {
-    return a + b;
-}
-
-const subtract = function(a, b) {
+function subtract(a,b){
   return a - b;
 }
 
-const divide = function(a, b) {
-   if (b === 0) {
-    return "Cannot divide by zero";
-   } else {
-     return a / b; 
-   }
-};
+function multiply(a,b){
+  return a * b;
+}
 
-let firstNumber = 0;  //  creating variables for calculator operation and initiating a default variable. 
-let operator = '+';   // 
-let secondNumber = 1; // 
+function divide(a,b){
+  return a / b;
+}
 
-const operate = function(operator, num1, num2) {     // Step 2: Create the operate function
-  switch (operator) {
-    case '+':
-      return add(num1, num2);
-    case '-':
-      return subtract(num1, num2);
-    case '*':
-      return multiply(num1, num2);
-    case '/':
-      return divide(num1, num2);
-    default:
-      return "Invalid operator";
-  }
-};
+function operate (operator) {
+  if (firstNumber === 0){
+    firstNumber = document.getElementById('display').value;
+    console.log(firstNumber);
+    document.getElementById('display').value= 0;
+  } else {
+    secondNumber = document.getElementById('display').value;
+  console.log(firstNumber,secondNumber);
+    switch (operator){
+    case "+":
+      firstNumber = add(firstNumber,secondNumber);
+    case "-":
+      firstNumber = subtract(firstNumber,secondNumber);
+    case "*":
+      firstNumber = multiply(firstNumber,secondNumber);
+    case "/":
+      firstNumber = divide(firstNumber,secondNumber);
+    } 
+  }   
+  console.log(firstNumber, secondNumber);
+}
 
-const result = operate(operator, firstNumber, secondNumber);  // Example usage of operate function
-console.log(result); // This will log the result of the operation
+// Function to update the display with a clicked button value
+function updateDisplay(value) {
+ displayValue = document.getElementById('display').value;
+  displayValue = displayValue + value;
+  document.getElementById('display').value = displayValue;
+}
 
+// Function to calculate the result
+function calculateResult() {
+  document.getElementById('display').value = firstNumber;
 
-  let displayValue = "0";
+}
 
-  // Function to update the display with a clicked button value
-  function updateDisplay(value) {
-    displayValue = displayValue === "0" ? value : displayValue + value;
-    document.getElementById('display').value = displayValue;
-  }
-
-  // Function to calculate the result
-  function calculateResult() {
-    // Implement this function using the `operate` function we created earlier
-    // You'll need to parse the displayValue to extract the operator and numbers
-    // Call the operate function and update the display with the result
-  }
-
-  // Function to clear the display
-  function clearDisplay() {
-    displayValue = "0";
-    document.getElementById('display').value = displayValue;
-  }
+// Function to clear the display
+function clearDisplay() {
+  displayValue = "0";
+  firstNumber = 0;
+  secondNumber = 0;
+  document.getElementById('display').value = displayValue;
+}
 
 
