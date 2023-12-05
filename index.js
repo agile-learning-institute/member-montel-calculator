@@ -1,64 +1,53 @@
-let firstNumber = 0;
-let secondNumber = 0;
-let operator = '';
+// theValue contains the currently calculated value
+let theValue = 0;
 
-function add(a,b){
-  return a + b;
-}
+// saveOperator is the last operator that was used
+// this allows us to compute AFTER they have entered the next number
+let saveOperator = "";
 
-function subtract(a,b){
-  return a - b;
-}
-
-function multiply(a,b){
-  return a * b;
-}
-
-function divide(a,b){
-  return a / b;
-}
-
+// When an operator is clicked, compute the new value 
 function operate (operator) {
-  if (firstNumber === 0){
-    firstNumber = document.getElementById('display').value;
-    console.log(firstNumber);
-    document.getElementById('display').value= 0;
-  } else {
-    secondNumber = document.getElementById('display').value;
-  console.log(firstNumber,secondNumber);
-    switch (operator){
+  theNumber = Number(document.getElementById('display').value);
+  switch(saveOperator) {
+    // If there is no operator, just update theValue
+    case "":
+      theValue = theNumber;
+      break;
     case "+":
-      firstNumber = add(firstNumber,secondNumber);
+      theValue = theValue + theNumber;
+      break;
     case "-":
-      firstNumber = subtract(firstNumber,secondNumber);
+      theValue = theValue - theNumber;
+      break;
     case "*":
-      firstNumber = multiply(firstNumber,secondNumber);
+      theValue = theValue * theNumber;
+      break;
     case "/":
-      firstNumber = divide(firstNumber,secondNumber);
-    } 
-  }   
-  console.log(firstNumber, secondNumber);
+      theValue = theValue / theNumber;
+      break;
+  } 
+  saveOperator = operator;
+  document.getElementById('display').value = "";
 }
+
 
 // Function to update the display with a clicked button value
 function updateDisplay(value) {
- displayValue = document.getElementById('display').value;
+  displayValue = document.getElementById('display').value;
   displayValue = displayValue + value;
   document.getElementById('display').value = displayValue;
 }
 
 // Function to calculate the result
 function calculateResult() {
-  document.getElementById('display').value = firstNumber;
-
+  operate("");
+  document.getElementById('display').value = theValue;
 }
 
 // Function to clear the display
 function clearDisplay() {
-  displayValue = "0";
-  firstNumber = 0;
-  secondNumber = 0;
-  document.getElementById('display').value = displayValue;
+  theValue = 0;
+  document.getElementById('display').value = "";
 }
 
 
