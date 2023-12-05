@@ -5,7 +5,7 @@ let theValue = 0;
 // this allows us to compute AFTER they have entered the next number
 let saveOperator = "";
 
-// When an operator is clicked, compute the new value 
+// When an operator is clicked, compute the new value using the saveOperator and the new number
 function operate (operator) {
   theNumber = Number(document.getElementById('display').value);
   switch(saveOperator) {
@@ -49,5 +49,3 @@ function clearDisplay() {
   theValue = 0;
   document.getElementById('display').value = "";
 }
-
-
