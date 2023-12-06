@@ -34,7 +34,6 @@ function operate (operator) {
   document.getElementById('display').value = theValue;
 }
 
-
 // Function to update the display with a clicked button value. If we are starting a new number
 // then we should ignore the current value and start from an empty string, before appending 
 // the specified value to the display value.
