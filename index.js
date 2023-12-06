@@ -39,7 +39,6 @@ function operate (operator) {
 // then we should ignore the current value and start from an empty string, before appending 
 // the specified value to the display value.
 function updateDisplay(value) {
-  console.log(newValue);
   let startingValue = document.getElementById('display').value;
   if (newValue) {
     startingValue = "";
