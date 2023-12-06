@@ -10,9 +10,12 @@ let saveOperator = "";
 
 // When an operator is clicked, compute the new value using the saveOperator and the new number
 function operate (operator) {
+  // Get the current number from the display value
   theNumber = Number(document.getElementById('display').value);
+
+  // Execute the operation (based on the saved operator value)
   switch(saveOperator) {
-    // If there is no operator, just update theValue
+    // If there is no saved operator, just update theValue
     case "":
       theValue = theNumber;
       break;
@@ -29,21 +32,33 @@ function operate (operator) {
       theValue = theValue / theNumber;
       break;
   } 
+  
+  // Save the operator so we know what to do with the next number
   saveOperator = operator;
+
+  // Set the newValue flag so that updateDisplay knows to reset
   newValue = true;
+
+  // Update the display with the new calculated value
   document.getElementById('display').value = theValue;
 }
 
-// Function to update the display with a clicked button value. If we are starting a new number
-// then we should ignore the current value and start from an empty string, before appending 
-// the specified value to the display value.
+// Function to update the display with a clicked button value.
 function updateDisplay(value) {
+  // Start with the value currently displayed
   let startingValue = document.getElementById('display').value;
+
+  // If new New Value flag is set, start from an empty string 
+  // and turn the flag off
   if (newValue) {
     startingValue = "";
     newValue = false;
   }
+
+  // append the number clicked to the display value
   displayValue = startingValue + value;
+
+  // update the value displayed on the page
   document.getElementById('display').value = displayValue;
 }
 
