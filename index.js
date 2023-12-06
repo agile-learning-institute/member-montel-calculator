@@ -15,10 +15,6 @@ function operate (operator) {
 
   // Execute the operation (based on the saved operator value)
   switch(saveOperator) {
-    // If there is no saved operator, just update theValue
-    case "":
-      theValue = theNumber;
-      break;
     case "+":
       theValue = theValue + theNumber;
       break;
@@ -30,6 +26,10 @@ function operate (operator) {
       break;
     case "/":
       theValue = theValue / theNumber;
+      break;
+    // If there is no valid operator, just update theValue
+    default:
+      theValue = theNumber;
       break;
   } 
   
